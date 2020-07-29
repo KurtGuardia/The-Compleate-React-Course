@@ -9,7 +9,7 @@
   font-weight: bold;
 }
 
-.button {
+button {
   background-color: green;
   color: white;
   font: inherit;
@@ -18,15 +18,15 @@
   cursor: pointer;
 }
 
-.Cockpit .button:hover {
+.Cockpit button:hover {
   background-color: lightgreen;
   color: blue;
 }
 
-.Cockpit .button.red {
+.Cockpit button.Red {
   background-color: red;
 }
 
-.Cockpit .button.red:hover {
+.Cockpit button.Red:hover {
   background-color: salmon;
 }
