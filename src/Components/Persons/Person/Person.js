@@ -6,6 +6,18 @@ import withClasses from "../../../hoc/withClass";
 import AuthContext from "../../../context/auth-context";
 
 class Person extends Component {
+  constructor(props) {
+    super(props);
+    this.inputElementRef = React.createRef();
+  }
+
+  static contextType = AuthContext;
+
+  componentDidMount() {
+    this.inputElementRef.current.focus();
+    console.log(this.context.authenticated);
+  }
+
   render() {
     return (
       <Aux>
