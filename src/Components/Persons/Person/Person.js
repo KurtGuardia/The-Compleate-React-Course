@@ -44,12 +44,3 @@ class Person extends Component {
     );
   }
 }
-
-Person.propType = {
-  click: PropTypes.func,
-  name: PropTypes.string,
-  age: PropTypes.number,
-  changed: PropTypes.func,
-};
-
-export default withClasses(Person, classes.Person);
