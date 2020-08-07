@@ -4,7 +4,22 @@ import AuthContext from "../../context/auth-context";
 
 const Cockpit = (props) => {
     
+    
   
+    const assignedClasses = [];
+    let btnClasses = "";
+  
+    if (props.showPersons) {
+      btnClasses = classes.Red;
+    }
+  
+    if (props.personsLength >= 2) {
+      assignedClasses.push(classes.red);
+    }
+  
+    if (props.personsLength >= 1) {
+      assignedClasses.push(classes.bold);
+    }
     console.log(props.personsLength);
     return (
       <div className={classes.Cockpit}>
