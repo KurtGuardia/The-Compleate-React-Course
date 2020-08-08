@@ -4,7 +4,11 @@ import AuthContext from "../../context/auth-context";
 
 const Cockpit = (props) => {
     
-    
+    const toggleBtnRef = useRef(null);
+  
+    useEffect(() => {
+      toggleBtnRef.current.click();
+    }, []);
   
     const assignedClasses = [];
     let btnClasses = "";
@@ -34,3 +38,5 @@ const Cockpit = (props) => {
       </div>
     );
   };
+
+export default Cockpit;
