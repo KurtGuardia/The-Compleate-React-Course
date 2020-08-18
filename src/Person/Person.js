@@ -1,17 +1,30 @@
 import React from "react";
+import styled from "styled-components";
 
-const Person = (props) => {
+const StyledDiv = styled.div`
+  width: 60%;
+  margin: 16px auto;
+  box-shadow: 0 2px 3px #ccc;
+  padding: 16px;
+  text-align: center;
+
+  @media (max-width: 500px) {
+   background-color: red;
+  }
+`;
+
+const person = (props) => {
+  
   return (
-    <div>      
+    // <div style={style}>
+    <StyledDiv>
       <p onClick={props.click}>
         I'm {props.name} and I'm {props.age} years old
       </p>
-      <p>
-          {props.children}
-      </p>
+      <p>{props.children}</p>
       <input type="text" onChange={props.changed} value={props.name}></input>
-    </div>
+    </StyledDiv>
   );
 };
 
-export default Person;
+export default person;
