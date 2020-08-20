@@ -1,22 +1,8 @@
 import React, { Component } from "react";
-import "./App.css";
-import styled from "styled-components";
-import Person from "./Person/Person";
-
-const StyledButton = styled.button`
-      background-color: ${props => props.alt ? 'red' : 'green'};
-      color: white;
-      font: inherit;
-      border: 1px solid blue;
-      padding: 8px;
-      cursor: pointer;
-
-      &:hover {
-        background-color: ${props => props.alt ? 'red' : 'green'};
-        color: blue;
-      }
-    }
-`;
+import classes from "./App.css";
+import Person from "../Components/Persons/Person/Person";
+import Persons from "../Components/Persons/Persons";
+import Cockpit from "../Components/Cockpit/Cockpit";
 
 class App extends Component {
   state = {
@@ -59,32 +45,25 @@ class App extends Component {
 
   render() {
     let persons = null;
+    let btnClasses = [classes.button];
 
     if (this.state.showPersons) {
       persons = (
         <div>
-          {this.state.persons.map((person, index) => {
-            return (
-              <Person
-                name={person.name}
-                age={person.age}
-                click={() => this.deletePersonHandler(index)}
-                key={person.id}
-                changed={(event) => this.namechangeHandler(event, person.id)}
-              />
-            );
-          })}
+          <Persons
+            persons={this.state.persons}
+            clicked={this.deletePersonHandler}
+            changed={this.namechangeHandler}
+          />
         </div>
       );
+
+      btnClasses.push(classes.red);
     }
 
     return (
-      <div className="App">
-        <h1>I'm a React App!</h1>
-        <p>this is really working!</p>
-        <StyledButton alt={this.state.showPersons} onClick={this.togglePersonsHandler}>
-          Toggle Persons
-        </StyledButton>
+      <div className={classes.App}>
+        
         {persons}
       </div>
     );
