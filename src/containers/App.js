@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import classes from "./App.css";
-import Person from "../Components/Persons/Person/Person";
 import Persons from "../Components/Persons/Persons";
 import Cockpit from "../Components/Cockpit/Cockpit";
 
 class App extends Component {
+
+  constructor(props){
+    super(props)
+    console.log('App.js constructor')
+  }
+
   state = {
     persons: [
       { id: "adsf", name: "Kurt", age: 28 },
@@ -14,6 +19,8 @@ class App extends Component {
     otherState: "some other value",
     showPersons: false,
   };
+
+  
 
   namechangeHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex((p) => {
@@ -45,25 +52,24 @@ class App extends Component {
 
   render() {
     let persons = null;
-    let btnClasses = [classes.button];
 
     if (this.state.showPersons) {
       persons = (
-        <div>
-          <Persons
-            persons={this.state.persons}
-            clicked={this.deletePersonHandler}
-            changed={this.namechangeHandler}
-          />
-        </div>
+        <Persons
+          persons={this.state.persons}
+          clicked={this.deletePersonHandler}
+          changed={this.namechangeHandler}
+        />
       );
-
-      btnClasses.push(classes.red);
     }
 
     return (
       <div className={classes.App}>
-        
+        <Cockpit
+          showPersons={this.state.showPersons}
+          persons={this.state.persons}
+          clicked={this.togglePersonsHandler}
+        />
         {persons}
       </div>
     );

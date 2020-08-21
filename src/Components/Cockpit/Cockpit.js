@@ -1,22 +1,28 @@
 import React from "react";
-import classes from './Cockpit.css'
+import classes from "./Cockpit.css";
 
 const cockpit = (props) => {
-    const assignedClasses = [];
-    if ( props.persons.length <= 2 ){
-        assignedClasses.push( classes.red );
-    }
-    if ( props.persons.length <= 1 ){
-        assignedClasses.push( classes.bold );
-    }
+  const assignedClasses = [];
+  let btnClasses = "";
+
+  if (props.showPersons) {
+    btnClasses = classes.Red;
+  }
+
+  if (props.persons.length <= 2) {
+    assignedClasses.push(classes.red);
+  }
+  if (props.persons.length <= 1) {
+    assignedClasses.push(classes.bold);
+  }
 
   return (
-    <div>
+    <div className={classes.Cockpit}>
       <h1>I'm a React App!</h1>
-      <p>this is really working!</p>
+      <p className={assignedClasses.join(" ")}>this is really working!</p>
       <button
-        className={btnClasses.join(" ")}
-        onClick={this.togglePersonsHandler}
+        className={classes.button}
+        onClick={props.clicked}
       >
         Toggle Persons
       </button>
